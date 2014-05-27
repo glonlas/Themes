@@ -8,7 +8,7 @@
         <!-- title, description, keyword, robots -->
               {% if isSingle%}
                 {% list Posts %}
-    		  		<title>{% if Post.Title is not empty %}{{ Post.Title }} - {% elseif Post.Snippet is not empty %}{{ Post.Snippet|truncate(80) }} - {% endif %}{{Blog.Title}}</title>
+                  	<title>{% if Post.Title is not empty %}{{ Post.Title }} - {% elseif Post.Snippet is not empty %}{{ Post.Snippet|truncate(80) }} - {% endif %}{{Blog.Title}}</title>
 			  		<meta name="description" content="{{ Blog.Description }}" />
 		  			<meta name="keywords" content="{% list Post.Tags %}{{ Tag.Title }}{% if loop.last == false %}, {% endif %}{% endlist %}" />
 					<meta name="robots" content="index,follow" />
@@ -1079,7 +1079,7 @@ a.ob-repost-btn {
 	font-family: "podkovaregular", Helvetica, Arial, sans-serif;
 	font-size: 18px;
 	color: #ffffff;
-	padding-left: 30px;
+	padding-left: 0px;
 }
 
 
@@ -1101,12 +1101,16 @@ a.ob-repost-btn {
 }
 
 .header .social-icons .rss {
-	margin-left: 30px;
-	margin-right: 20px;
+	margin-left: 20px;
+	margin-right: 10px;
 }
 .header .social-icons .twitter {
-	margin-right: 20px;
+	margin-right: 10px;
 }
+.header .social-icons .facebook {
+	margin-right: 10px;
+}
+
 
 
 .header .page-header{
@@ -1188,7 +1192,7 @@ a.ob-repost-btn {
     white-space: nowrap; 
     height: 24px;
     width: 24px;
-    background-image: url(http://data.over-blog-kiwi.com/0/11/49/49/ob_a66a8e_sprite.png); 
+    background-image: url(http://data.over-blog-kiwi.com/0/11/49/49/20140509/ob_92a2a6_sprite.png); 
     background-repeat: no-repeat;
     display: block;
 }
@@ -1200,6 +1204,9 @@ a.ob-repost-btn {
 }
 .social-icons .facebook a {
 	background-position: -81px 0;
+}
+.social-icons .lang a {
+	background-position: -121px 0;
 }
 
 
@@ -1233,12 +1240,12 @@ footer.widebar .wrapper {
 
 .footerbody h2 {
 	font-size : 24px;
-	margin-bottom: 25px;
+	margin-bottom: 15px;
 }
 
 .footerbody p {
 	font-size : 17px;
-	line-height: 27px;
+	line-height: 24px;
 }
 .footerbody .about {
 	text-align: right;
@@ -1642,13 +1649,16 @@ margin-left: 30px;
 			<nav class="social-icons">
 				<ul>
 					<li class="rss">
-						<a title="Abonnez-vous en RSS" href="{{ Blog.RssUrl }}" target="_blank">RSS</a>
+						<a title="Subscribe to RSS" href="{{ Blog.RssUrl }}" target="_blank">RSS</a>
 					</li>
 					<li class="twitter">
-						<a title="Followez moi sur Twitter" href="https://www.twitter.com/SuisseEntrepreneurs" target="_blank">Twitter</a>
+						<a title="Follow me on Twitter" href="https://www.twitter.com/SuisseEntrepreneurs" target="_blank">Twitter</a>
 					</li>
 					<li class="facebook">
-						<a title="Suivez ma page Facebook" href="https://www.facebook.com/SuisseEntrepreneurs" target="_blank">Facebook</a>
+						<a title="Follow my blog on Facebook" href="https://www.facebook.com/SuisseEntrepreneurs" target="_blank">Facebook</a>
+					</li>
+					<li class="lang">
+						<a title="Passer sur la version Française" href="http://www.suisse-entrepreneurs.com">Version Française</a>
 					</li>
 				</ul>
 			</nav>
@@ -1660,9 +1670,9 @@ margin-left: 30px;
 			<!-- Blog title -->
 			<a href="{{ Blog.Url }}" title="{{ Blog.Title }}" class="one-col"><img src="http://data.over-blog-kiwi.com/0/11/49/49/ob_405f76_bg-header.jpg" alt="{{ Blog.Title }}" width="1153" height="372" /></a>
 			<h2 class="one-col">
-				La Suisse, pays sans ressources naturelles,<br/>
-				est pourtant un pays riche. Pourquoi ?<br />
-				Je cherche la réponse du côté des entrepreneurs...
+				Switzerland, a small country without natural resources, 
+				is nevertheless, one of the world's most prosperous nations. Why? 
+				I'm talking to the country's entrepreneurs to find the answer.
 			</h2>
 		</div>
 	</header>
@@ -1992,11 +2002,12 @@ margin-left: 30px;
 <footer class="widebar clearfix">
 	<div class="wrapper">
 		<section class="footerbody">
-				<img src="http://data.over-blog-kiwi.com/0/11/49/49/ob_3b00fa_cathy-footer.jpg" alt="Catherine Nivez de Suisse Entrepreneur" width="204" height="230">
+				<img src="http://data.over-blog-kiwi.com/0/11/49/49/ob_3b00fa_cathy-footer.jpg" alt="Catherine Nivez from Suisse Entrepreneurs" width="204" height="230">
 				<div class="footertext">
 				 <h2>About</h2>
-				 <p>Après 20 ans de journalisme dans les medias traditionnels,<br />je m'offre un espace de liberté sur ce blog. J'ai la chance de rencontrer des patrons et créateurs d’entreprises autour de moi à Genève. Je partage ici ces rencontres.</p>
-				 <p class="about"><a href="/a-propos">> Lire la suite</a></p>
+				 <p>After 20 years of journalism in traditional media, <br>I've opened this blog as my personal space. I am very fortunate to meet entrepreneurs of all nationalities, who live near me around Lake Geneva. I share these interviews with you on this blog.
+				 </p>
+				 <p class="about"><a href="/about">> Read more</a></p>
 				</div>
 		</section>
 
@@ -2005,13 +2016,16 @@ margin-left: 30px;
 			<nav class="social-icons">
 				<ul>
 					<li class="twitter">
-						<a title="Followez moi sur Twitter" href="https://www.twitter.com/SuisseEntrepreneurs" target="_blank">Twitter</a>
+						<a title="Follow me on Twitter" href="https://www.twitter.com/SuisseEntrepreneurs" target="_blank">Twitter</a>
 					</li>
 					<li class="rss">
-						<a title="Abonnez-vous en RSS" href="{{ Blog.RssUrl }}" target="_blank">RSS</a>
+						<a title="Subscribe to RSS" href="{{ Blog.RssUrl }}" target="_blank">RSS</a>
 					</li>
 					<li class="facebook">
-						<a title="Suivez ma page Facebook" href="https://www.facebook.com/SuisseEntrepreneurs" target="_blank">Facebook</a>
+						<a title="Follow my blog on Facebook" href="https://www.facebook.com/SuisseEntrepreneurs" target="_blank">Facebook</a>
+					</li>
+					<li class="lang">
+						<a title="Passer sur la version Française" href="http://www.suisse-entrepreneurs.com">Version Française</a>
 					</li>
 				</ul>
 			</nav>
@@ -2019,10 +2033,10 @@ margin-left: 30px;
 			<nav class="navbar">
 				<ul>
 					<li class="whoami">
-						<a title="Who am I" href="/a-propos">Who am I</a>
+						<a title="Who am I" href="/about">Who am I</a>
 					</li>
 					<li class="whoido">
-						<a title="Who I do" href="/a-propos">Who I do</a>
+						<a title="Who I do" href="/about">Who I do</a>
 					</li>
 					<li class="contact">
 						<a title="Contact me" href="/contact">Contact</a>
@@ -2112,4 +2126,5 @@ var _gaq = _gaq || [];
 
 </body>
 </html>
+
 

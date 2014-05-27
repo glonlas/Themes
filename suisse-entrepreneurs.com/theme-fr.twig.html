@@ -8,7 +8,7 @@
         <!-- title, description, keyword, robots -->
               {% if isSingle%}
                 {% list Posts %}
-    		  		<title>{% if Post.Title is not empty %}{{ Post.Title }} - {% elseif Post.Snippet is not empty %}{{ Post.Snippet|truncate(80) }} - {% endif %}{{Blog.Title}}</title>
+        	  		<title>{% if Post.Title is not empty %}{{ Post.Title }} - {% elseif Post.Snippet is not empty %}{{ Post.Snippet|truncate(80) }} - {% endif %}{{Blog.Title}}</title>
 			  		<meta name="description" content="{{ Blog.Description }}" />
 		  			<meta name="keywords" content="{% list Post.Tags %}{{ Tag.Title }}{% if loop.last == false %}, {% endif %}{% endlist %}" />
 					<meta name="robots" content="index,follow" />
@@ -1079,7 +1079,7 @@ a.ob-repost-btn {
 	font-family: "podkovaregular", Helvetica, Arial, sans-serif;
 	font-size: 18px;
 	color: #ffffff;
-	padding-left: 30px;
+	padding-left: 0px;
 }
 
 
@@ -1101,11 +1101,12 @@ a.ob-repost-btn {
 }
 
 .header .social-icons .rss {
-	margin-left: 30px;
-	margin-right: 20px;
+	margin-left: 20px;
+	margin-right: 10px;
 }
-.header .social-icons .twitter {
-	margin-right: 20px;
+.header .social-icons .twitter,
+.header .social-icons .facebook {
+	margin-right: 10px;
 }
 
 
@@ -1188,7 +1189,7 @@ a.ob-repost-btn {
     white-space: nowrap; 
     height: 24px;
     width: 24px;
-    background-image: url(http://data.over-blog-kiwi.com/0/11/49/49/ob_a66a8e_sprite.png); 
+    background-image: url(http://data.over-blog-kiwi.com/0/11/49/49/20140509/ob_101ffd_sprite.png); 
     background-repeat: no-repeat;
     display: block;
 }
@@ -1201,6 +1202,10 @@ a.ob-repost-btn {
 .social-icons .facebook a {
 	background-position: -81px 0;
 }
+.social-icons .lang a {
+	background-position: -161px 0;
+}
+
 
 
 /* footer */
@@ -1653,6 +1658,9 @@ margin-left: 30px;
 					<li class="facebook">
 						<a title="Suivez ma page Facebook" href="https://www.facebook.com/SuisseEntrepreneurs" target="_blank">Facebook</a>
 					</li>
+					<li class="lang">
+						<a title="Switch to the English version" href="http://en.suisse-entrepreneurs.com">English version</a>
+					</li>
 				</ul>
 			</nav>
 		</div>
@@ -2000,7 +2008,7 @@ margin-left: 30px;
 <footer class="widebar clearfix">
 	<div class="wrapper">
 		<section class="footerbody">
-				<img src="http://data.over-blog-kiwi.com/0/11/49/49/ob_3b00fa_cathy-footer.jpg" alt="Catherine Nivez de Suisse Entrepreneur" width="204" height="230">
+				<img src="http://data.over-blog-kiwi.com/0/11/49/49/ob_3b00fa_cathy-footer.jpg" alt="Catherine Nivez de Suisse Entrepreneurs" width="204" height="230">
 				<div class="footertext">
 				 <h2>A propos</h2>
 				 <p>Après 20 ans de journalisme dans les medias traditionnels,<br />je m'offre un espace de liberté sur ce blog. J'ai la chance de rencontrer des patrons et créateurs d’entreprises autour de moi à Genève. Je partage ici ces rencontres.</p>
@@ -2020,6 +2028,9 @@ margin-left: 30px;
 					</li>
 					<li class="facebook">
 						<a title="Suivez ma page Facebook" href="https://www.facebook.com/SuisseEntrepreneurs" target="_blank">Facebook</a>
+					</li>
+					<li class="lang">
+						<a title="Switch to the English version" href="http://en.suisse-entrepreneurs.com">English version</a>
 					</li>
 				</ul>
 			</nav>
@@ -2120,4 +2131,3 @@ var _gaq = _gaq || [];
 
 </body>
 </html>
-
