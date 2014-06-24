@@ -1,0 +1,989 @@
+<!DOCTYPE html>
+<html lang="{{ Blog.Lang|default('en') }}">
+<head>
+    <!-- shortcut:[Meta] -->
+    <!-- title, description, keyword, robots -->
+    {% title %}
+
+    {% meta %}
+
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <meta name="google-site-verification" content="jzaUdk5MmQC4h_WxZG5I1l8ZuV0AXN3SLTmQeOVqInA" />
+
+    <!-- shortcut:[Options] -->
+	<!-- options -->	
+	<meta name="constant:displayArticlesLimit" content="20" />
+	<meta name="list:background_type:Use a background Image?" items="Yes,No" default="Yes" group="Background" />
+	<meta name="image:background_custom:Background image (recommended size 1680x1050)" group="Background" />
+	<meta name="color:background_color:Background color" default="#8a7b5f" group="Background" />
+	<meta name="list:background_repeat:Background repeat mode" default="cover" items="none,fixed,cover"  group="Background" />
+	<meta name="string:background_position:Background position" default="center center" group="Background" />
+	
+
+	<meta name="list:block_variant:Main block variant" default="dark" items="dark,light" group="Main block" />
+	<meta name="list:block_align:Main block alignment" default="left" items="left,center,right" group="Main block" />
+	<meta name="string:block_width:Main block width" default="50%" group="Main block" />
+	<meta name="string:block_top_margin:Main block top margin (10px or 10%)" default="2%" group="Main block" />
+	<meta name="string:block_left_margin:Main block left margin (10px or 10%)" default="0px" group="Main block" />
+	<meta name="string:block_right_margin:Main block right margin (10px or 10%)" default="2%" group="Main block" />
+	<meta name="list:block_opacity:Main block opacity (in %)" items="0,05,10,15,20,25,30,35,40,45,50,55,60,65,70,75,80,85,90,95,100" default="45" group="Main block" />
+	<meta name="list:block_radius:Main block border radius" items="0,2,4,5,8,10,15,20,25,30,35,40,45,50,55,60,65,70,75,80,85,90,95,99" default="10" group="Main block" />
+
+	<meta name="string:bio_name:Name" default="John Doe" group="Biography" />
+	<meta name="string:bio_headline:Headline" default="Be smart get a resume blog" group="Biography" />
+	<meta name="string:bio_desc:Biography" default="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla purus massa, laoreet quis tincidunt a, interdum ac est. Donec consequat sodales dolor, ut volutpat elit fermentum vitae." group="Biography" />
+	<meta name="image:bio_photo:Upload bio photo" group="Biography" />
+	<meta name="list:bio_photo_type:Which photo use?" items="None,User avatar, Uploaded photo" default="User avatar" group="Biography" />
+	<meta name="list:bio_photo_size:Which photo size?" items="150,200,250,300" default="200" group="Biography" />
+	
+	<meta name="string:name_color:Name color" default="rgba(255,255,255,0.8)" group="Colors" />
+	<meta name="string:headline_color:Headline color" default="rgba(255,255,255,0.4)" group="Colors" />
+	<meta name="string:biography_color:Biography color" default="rgba(255,255,255,0.6)" group="Colors" />
+	<meta name="string:share_color:Share color" default="rgba(255,255,255,0.8)" group="Colors" />
+	<meta name="string:links_color:Links color" default="#c535a7" group="Colors" />
+
+	<meta name="list:name_font:Name font" default="Lato" items="Arial,Bitter,Cabin,Calligraffitti,Coming Soon,Courier New,Crafty Girls,Dancing Script,Droid Sans,Helvetica,Josefin Sans,Lato,Lucida Grande,Marck Script,Monaco,Open Sans,Pacifico,Permanent Marker,PT Sans,Raleway,Reenie Beanie,Rock Salt,Times New Roman,Trebuchet MS,Verdana" group="Fonts" />
+	<meta name="list:headline_font:Headline font" default="Lucida Grande" items="Arial,Bitter,Cabin,Calligraffitti,Coming Soon,Courier New,Crafty Girls,Dancing Script,Droid Sans,Helvetica,Josefin Sans,Lato,Lucida Grande,Marck Script,Monaco,Open Sans,Pacifico,Permanent Marker,PT Sans,Raleway,Reenie Beanie,Rock Salt,Times New Roman,Trebuchet MS,Verdana" group="Fonts" />
+	<meta name="list:biography_font:Biography font" default="Lato" items="Arial,Bitter,Cabin,Calligraffitti,Coming Soon,Courier New,Crafty Girls,Dancing Script,Droid Sans,Helvetica,Josefin Sans,Lato,Lucida Grande,Marck Script,Monaco,Open Sans,Pacifico,Permanent Marker,PT Sans,Raleway,Reenie Beanie,Rock Salt,Times New Roman,Trebuchet MS,Verdana" group="Fonts" />
+	<meta name="string:name_font_size:Name font size" default="78px" group="Fonts" />
+	<meta name="string:headline_font_size:Headline font size" default="22px" group="Fonts" />
+	<meta name="string:biography_font_size:Biography font size" default="16px" group="Fonts" />
+
+
+	<meta name="string:linkedin_account:Linkedin username (www.linkedin.com/in/[username])" default="johndoe" group="Social" />
+	<meta name="string:twitter_account:Twitter username (twitter.com/#!/[username])" default="johndoe" group="Social" />
+	<meta name="string:facebook_account:Facebook username (www.facebook.com/[username])" default="johndoe" group="Social" />
+	<meta name="string:foursquare_account:Foursquare username (foursquare.com/[username])" default="johndoe" group="Social" />
+	<meta name="string:flickr_account:Flickr username (www.flickr.com/people/[username])" default="johndoe" group="Social" />
+	<meta name="string:youtube_account:Youtube username (http://www.youtube.com/user/[username])" default="johndoe" group="Social" />
+
+	<meta name="string:blogroll_1:Your website URL 1" default="http://www.over-blog.com" group="BlogRoll" />
+	<meta name="string:blogroll_2:Your website URL 2" group="BlogRoll" />
+	<meta name="string:blogroll_3:Your website URL 3" group="BlogRoll" />
+	<meta name="string:blogroll_4:Your website URL 4" group="BlogRoll" />
+	<meta name="string:blogroll_5:Your website URL 5" group="BlogRoll" />
+
+	<meta name="string:sharing_title:Sharing sentence" default="Share me!" group="Sharing" />
+
+	<meta name="list:comment:Comment service" items="OverBlog, Facebook, Disqus" default="OverBlog" group="Comment" />
+	<meta name="string:comment_disqus:Disqus account (Mandatory)" group="Comment" />
+
+	<meta name="string:google_analytics:Enter your ID Google Analytics" group="Settings" />
+	<meta name="string:facebook_appid:Facebook AppId (for sharing and comments)" group="Settings" />
+
+	<meta name="string:page_1_title:Title page 1" group="Footer" />
+	<meta name="string:page_1_link:Url page 1" group="Footer" />
+	<meta name="string:page_2_title:Title page 2" group="Footer" />
+	<meta name="string:page_2_link:Url page 2" group="Footer" />
+	<meta name="string:wording_footer:Copyright" group="Footer" />
+
+	<!-- shortcut:[Includes] -->
+	<!-- favicon -->		
+	{% if Blog.FaviconUrl is not empty %}
+		<link rel="icon" type="image/png" href="{{ Blog.FaviconUrl }}" />
+	{% else %}
+		<link rel="shortcut icon" type="image/x-icon" href="http://fdata.over-blog.net/99/00/00/01/img/favicon.ico" />
+		<link rel="icon" type="image/png" href="http://fdata.over-blog.net/99/00/00/01/img/favicon.png" />
+		<link rel="apple-touch-icon" href="http://fdata.over-blog.net/99/00/00/01/img/mobile-favicon.png" />
+	{% endif %}	
+	
+	<!-- SEO -->
+	{% if Custom('google_webmaster_id') is not empty %}
+		<meta name="google-site-verification" content="{{ Custom('google_webmaster_id') }}" />
+	{% endif %}
+	{% if Custom('msn_webmaster_id') is not empty %}
+		<meta name="msvalidate.01" content="{{ Custom('msn_webmaster_id') }}" />
+	{% endif %}
+
+	<!-- includes -->
+	<link rel="alternate" type="application/rss+xml" title="RSS" href="{{ Blog.RssUrl }}" />
+	{% if Blog.CssUrl is not empty %}
+	<link rel="stylesheet" href="{{ Blog.CssUrl }}" type="text/css" />
+	{% endif %}
+
+	{% if Blog.JsUrl is not empty %}
+		<script src="{{Blog.JsUrl}}" type="text/javascript"></script>
+	{% endif %}
+
+	<!-- shortcut:[Styles] -->
+	<style type="text/css">
+		/* Custom Fonts */
+{% if Custom('name_font') == 'Crafty Girls' or Custom('headline_font') == 'Crafty Girls' or Custom('biography_font') == 'Crafty Girls' %}@import url(http://fonts.googleapis.com/css?family=Crafty+Girls);{% endif %}
+{% if Custom('name_font') == 'Droid Sans' or Custom('headline_font') == 'Droid Sans' or Custom('biography_font') == 'Droid Sans' %}@import url(http://fonts.googleapis.com/css?family=Droid+Sans);{% endif %}
+{% if Custom('name_font') == 'Permanent Marker' or Custom('headline_font') == 'Permanent Marker' or Custom('biography_font') == 'Permanent Marker' %}@import url(http://fonts.googleapis.com/css?family=Permanent+Marker);{% endif %}
+{% if Custom('name_font') == 'Lato' or Custom('headline_font') == 'Lato' or Custom('biography_font') == 'Lato' %}@import url(http://fonts.googleapis.com/css?family=Lato);{% endif %}
+{% if Custom('name_font') == 'Cabin' or Custom('headline_font') == 'Cabin' or Custom('biography_font') == 'Cabin' %}@import url(http://fonts.googleapis.com/css?family=Cabin);{% endif %}
+{% if Custom('name_font') == 'PT Sans' or Custom('headline_font') == 'PT Sans' or Custom('biography_font') == 'PT Sans' %}@import url(http://fonts.googleapis.com/css?family=PT+Sans);{% endif %}
+{% if Custom('name_font') == 'Marck Script' or Custom('headline_font') == 'Marck Script' or Custom('biography_font') == 'Marck Script' %}@import url(http://fonts.googleapis.com/css?family=Marck+Script);{% endif %}
+{% if Custom('name_font') == 'Josefin Sans' or Custom('headline_font') == 'Josefin Sans' or Custom('biography_font') == 'Josefin Sans' %}@import url(http://fonts.googleapis.com/css?family=Josefin+Sans);{% endif %}
+{% if Custom('name_font') == 'Bitter' or Custom('headline_font') == 'Bitter' or Custom('biography_font') == 'Bitter' %}@import url(http://fonts.googleapis.com/css?family=Bitter);{% endif %}
+{% if Custom('name_font') == 'Reenie Beanie' or Custom('headline_font') == 'Reenie Beanie' or Custom('biography_font') == 'Reenie Beanie' %}@import url(http://fonts.googleapis.com/css?family=Reenie+Beanie);{% endif %}
+{% if Custom('name_font') == 'Calligraffitti' or Custom('headline_font') == 'Calligraffitti' or Custom('biography_font') == 'Calligraffitti' %}@import url(http://fonts.googleapis.com/css?family=Calligraffitti);{% endif %}
+{% if Custom('name_font') == 'Open Sans' or Custom('headline_font') == 'Open Sans' or Custom('biography_font') == 'Open Sans' %}@import url(http://fonts.googleapis.com/css?family=Open+Sans);{% endif %}
+{% if Custom('name_font') == 'Coming Soon' or Custom('headline_font') == 'Coming Soon' or Custom('biography_font') == 'Coming Soon' %}@import url(http://fonts.googleapis.com/css?family=Coming Soon);{% endif %}
+{% if Custom('name_font') == 'Dancing Script' or Custom('headline_font') == 'Dancing Script' or Custom('biography_font') == 'Dancing Script' %}@import url(http://fonts.googleapis.com/css?family=Dancing+Script);{% endif %}
+{% if Custom('name_font') == 'Raleway' or Custom('headline_font') == 'Raleway' or Custom('biography_font') == 'Raleway' %}@import url(http://fonts.googleapis.com/css?family=Raleway);{% endif %}
+{% if Custom('name_font') == 'Rock Salt' or Custom('headline_font') == 'Rock Salt' or Custom('biography_font') == 'Rock Salt' %}@import url(http://fonts.googleapis.com/css?family=Rock+Salt);{% endif %}
+{% if Custom('name_font') == 'Pacifico' or Custom('headline_font') == 'Pacifico' or Custom('biography_font') == 'Pacifico' %}@import url(http://fonts.googleapis.com/css?family=Pacifico);{% endif %}
+
+		/**
+		 * YUI 3.4.1 (build 4118)
+		 * Copyright 2011 Yahoo! Inc. All rights reserved.
+		 * Licensed under the BSD License.
+		 * http://yuilibrary.com/license/
+		 */
+		html {color:#000;background:#FFF}body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pre,code,form,fieldset,legend,input,textarea,p,blockquote,th,td {margin:0;padding:0}table {border-collapse:collapse;border-spacing:0}fieldset,img {border:0}address,caption,cite,code,dfn,em,strong,th,var {font-style:normal;font-weight:normal}ol,ul {list-style:none}caption,th {text-align:left}h1,h2,h3,h4,h5,h6 {font-size:100%;font-weight:normal}q:before,q:after {content:''}abbr,acronym {border:0;font-variant:normal}sup {vertical-align:text-top}sub {vertical-align:text-bottom}input,textarea,select {font-family:inherit;font-size:inherit;font-weight:inherit}input,textarea,select {*font-size:100%}legend {color:#000}
+
+		 /**
+		 * Theme
+		 */
+		html {
+			/* Add my personal picture*/
+			background: #7c929f url(http://data.over-blog-kiwi.com/0/00/01/04/201302/ob_ee87f4147eecf2ec1c49e9d44ca34788_gerald-background.jpg) no-repeat left bottom fixed;
+		}
+		body {
+			color: #333;
+			font-family: 'Helvetica Neue',Helvetica,Arial,sans-serif;
+			font-size: 13px;
+			font-weight: normal;
+			line-height: 18px;
+			-webkit-font-smoothing: subpixel-antialiased;
+			text-rendering: geometricPrecision;
+
+			background: none;
+			padding-bottom: 20px;
+		}
+
+		a, a:focus, a:visited, a:hover {
+			color: {{ Custom('links_color')|default('whiteSmoke') }};
+			text-decoration: none;
+			-webkit-transition: color 300ms ease-in;
+			   -moz-transition: color 300ms ease-in;
+			    -ms-transition: color 300ms ease-in;
+			     -o-transition: color 300ms ease-in;
+			        transition: color 300ms ease-in;
+		}
+		img {
+			border: 0;
+			-ms-interpolation-mode: bicubic;
+		}
+		
+		strong {
+			font-weight: bold;
+		}
+
+		.clear {
+			clear: both;
+		}
+		.main {
+			width: {{ Custom('block_width')|default('50%') }};
+
+			margin-left: {{ Custom('block_left_margin')|default('2px') }};
+			margin-right: {{ Custom('block_right_margin')|default('2%') }};
+			margin-top: {{ Custom('block_top_margin')|default('2%') }};
+			
+			{% if Custom('block_align') == 'right' or Custom('block_align') is empty %}
+			float: right;
+			{% elseif Custom('block_align') == 'center' %}
+			margin-left: auto;
+			margin-right: auto;
+			{% endif %}
+			
+			margin-bottom: 40px;
+		}
+
+		.profile {
+			width: 100%;
+			padding: 20px;
+		}
+
+		.posts,
+		.index .bx-window {
+			background: rgba({% if Custom('block_variant') == 'light' %}255,255,255{% else %}0,0,0{% endif %},0.{{ Custom('block_opacity')|default('75') }});
+
+			width: 100%;
+			padding: 10px;
+
+			-webkit-border-radius: {{ Custom('block_radius')|default('10') }}px;
+			   -moz-border-radius: {{ Custom('block_radius')|default('10') }}px;
+			        border-radius: {{ Custom('block_radius')|default('10') }}px;
+		}
+		
+		.profile .portait{
+			float:left;
+			margin-right: 10px;
+			margin-bottom: 10px;
+		}
+		.profile h1{
+			color: {{ Custom('name_color')|default('rgba(255,255,255,0.8)') }};
+			{% if Custom('name_font') is not empty %}font-family: '{{ Custom('name_font') }}', 'Helvetica Neue',Helvetica,Arial,sans-serif;{% endif %}
+			font-size: {{ Custom('name_font_size')|default('78px') }};
+			line-height: 1em;
+			margin-bottom: 10px;
+		}
+		.profile h2{
+			color: {{ Custom('headline_color')|default('rgba(255,255,255,0.4)') }};
+			{% if Custom('headline_font') is not empty %}font-family: '{{ Custom('headline_font') }}', 'Helvetica Neue',Helvetica,Arial,sans-serif;{% endif %}
+			font-size: {{ Custom('headline_font_size')|default('22px') }};
+			line-height: 1.1em;
+			margin-bottom: 15px;
+		}
+		.profile .about{
+			color: {{ Custom('biography_color')|default('rgba(255,255,255,0.6)') }};
+			{% if Custom('biography_font') is not empty %}font-family: '{{ Custom('biography_font') }}', 'Helvetica Neue',Helvetica,Arial,sans-serif;{% endif %}
+			font-size: {{ Custom('biography_font_size')|default('16px') }};
+			line-height: 1.4em;
+		}
+		.profile .about p{
+			margin-bottom: 10px;
+			text-align: justify;
+		}
+		.profile .social{
+			padding-top: 20px;
+			padding-bottom: 20px;
+			clear: left;
+		}
+		.profile .social li {
+			display: block;
+			float:left;
+			margin-bottom: 8px;
+			margin-right: 8px;
+		}
+		.profile .social li a{
+			width: 32px;
+			height: 32px;
+			display: block;
+			background-image: url(http://data.over-blog-kiwi.com/0/00/01/04/201302/ob_f1b4ef5c7bb445d7204fdc382cb1cb16_social.png);
+			background-position: 0 0;
+			background-repeat: no-repeat;
+		}
+		.profile .social .linkedin a{
+			background-position: -64px 0;
+		}
+		.profile .social .twitter a{
+			background-position: -32px 0;
+		}
+		.profile .social .facebook a{
+			background-position: 0 0;
+		}
+		.profile .social .foursquare a{
+			background-position: -192px 0;
+		}
+		.profile .social .flickr a{
+			background-position: -128px 0;
+		}
+		.profile .social .youtube a{
+			background-position: -96px 0;
+		}
+		.profile .blogroll{
+			clear: both;
+			padding-top: 10px;
+		}
+		.profile .blogroll li{}
+		.profile .blogroll li a{
+			margin-left: 8px;
+			line-height: 16px;
+			vertical-align: top;
+			font-size: 17px;
+		}
+		.profile .likeboxes {
+			margin-top: 30px;
+		}
+		.profile .likeboxes h3 {
+			font-size: 20px;
+			margin-bottom: 10px;
+			color:{{ Custom('share_color')|default('rgba(255,255,255,0.8)') }};
+		}
+		
+		/* Social Sharing */
+		.likeboxes .share {
+			float: left;
+			margin-right: 10px;
+		}
+		
+		.single .likeboxes {
+			margin-top: 10px;
+			height: 25px;
+		}
+
+		/* Common Posts */
+		.posts .item-cover {
+			float: left;
+			margin-right: 10px;
+		}
+
+		{% if Custom('biography_font') is not empty %}
+		.posts .item-content {
+			font-family: '{{ Custom('biography_font') }}','Helvetica Neue',Helvetica,Arial,sans-serif;
+		}
+		{% endif %}
+		
+		.posts .item-content h1.title,
+		.posts .item-content h3.title,
+		.posts .item-content h3.title a {
+			color: {{ Custom('name_color')|default('rgba(255,255,255,0.8)') }};
+			font-size: 16px;
+		}
+
+		.posts .item-content .meta,
+		.posts .item-content .tags {
+			color: {{ Custom('headline_color')|default('rgba(255,255,255,0.4)') }};
+			font-size: 13px;
+		}
+		.posts .item-content .meta .author {}
+		.posts .item-content .meta time {}
+		.posts .item-content .body {
+			color: {{ Custom('biography_color')|default('rgba(255,255,255,0.6)') }};
+			font-size: 14px;
+		}
+
+		.post.summary {
+			clear: both;
+			margin-top: 10px;
+		}
+		
+		.index .post,
+		.post.summary {
+			height: 120px;
+			max-height: 120px;
+			overflow: hidden;
+		}
+		
+		/* Index Posts */
+		.index .bx-window {
+			padding-bottom: 0px;
+			padding-top: 0px;
+		}
+		
+		.index .bx-wrapper,
+		.index .posts {
+			position: relative;
+			margin-top: 20px;
+			width: 100%;
+		}
+
+		.index .posts {
+			height: 100px;
+			overflow:hidden;
+		}
+
+		.index .bx-window .posts {
+			background: transparent;
+			padding: 0;
+			-webkit-border-radius: none;
+			   -moz-border-radius: none;
+			        border-radius: none;
+		}
+
+		/* Single Posts */
+		.single .posts .item-content h1.title {
+			font-size: 1.8em;
+			margin-bottom: 10px;
+		}
+		.single .posts .item-content .body {
+			line-height: 1.4em;
+			margin-top: 15px;
+		}
+		
+		.single .posts .item-content .body p {
+			margin-bottom: 10px;
+		}
+
+		.single .posts .item-content .body h1,
+		.single .posts .item-content .body h2,
+		.single .posts .item-content .body h3 {
+			color: {{ Custom('name_color')|default('rgba(255,255,255,0.8)') }};
+			font-weight: bold;
+			margin-bottom: 10px;
+		}
+
+		.single .posts .item-content .body h1 {
+			font-size: 1.4em;
+		}
+
+		.single .posts .item-content .body h2 {
+			font-size: 1.3em;
+		}
+
+		.single .posts .item-content .body h3 {
+			font-size: 1.2em;
+		}
+
+		.single .posts .item-content .body .ob-text p {
+			margin-bottom: 15px;
+		}
+
+		.single .posts .item-content .body .ob-text strong {
+			font-weight: bold;
+		}
+
+		.single .posts .item-content .body .ob-text ul li {
+			list-style-type:disc;
+			margin-left: 30px;
+		}
+
+		.single .posts .item-content .body .ob-text ul li p {
+			margin-bottom: 0;
+		}
+
+		.single .posts .item-content .body .ob-desc {
+			font-style: italic;
+		}
+
+		/* Comments */
+		.single .posts .item-comments {
+			margin-top: 20px;
+		}
+		.single .posts .item-comments .fb-comments,
+		.single .posts .item-comments .fb-comments iframe {
+			margin-left: auto;
+			margin-right: auto;
+			width: 550px;
+			display: block;
+		}
+
+		/* Sections */
+		.single .ob-section {
+			clear: both;
+		}
+		
+		.single .posts .item-content .body .ob-section-text,
+		.single .posts .item-content .body .ob-section-video,
+		.single .posts .item-content .body .ob-section-link,
+		.single .posts .item-content .body .ob-section-quote,
+		.single .posts .item-content .body .ob-section-html {
+			margin-bottom: 20px;
+		}
+
+		.single .posts .item-content .body .ob-section-images {
+			margin-bottom: 30px;
+		}
+
+		.single .posts .item-content .body .ob-desc {
+			font-style: italic;
+		}
+
+		/* Text */
+		.single .posts .item-content .body .ob-section-text {
+			text-align: justify;
+		}
+
+		.single .posts .item-content .body .ob-section-text img {
+			margin-top: 5px;
+		}
+
+		/* Images */
+		.single .posts .item-content .body .ob-section-images {
+			width: 600px;
+			margin-left: auto;
+			margin-right: auto;
+		}
+
+		/* Link */
+		.ob-section-link .ob-ctn {
+			max-width: none;
+			background: rgba(255, 255, 255, 0.7);
+			border: none;
+		}
+		.ob-section-link .ob-media-left {
+			margin: 0;
+			height: 170px;
+		}
+
+		.ob-section-link .ob-snippet {
+			max-height: 250px;
+			overflow: hidden;
+			height: 59px;
+			margin-bottom: 0;
+			padding-bottom: 0;
+		}
+
+		.single .posts .body .ob-section-link .ob-url {
+			margin: 0;
+
+			-webkit-transition:all .2s linear;
+			-moz-transition:all .2s linear;
+			-ms-transition:all .2s linear;
+			-o-transition:all .2s linear;
+			transition:all .2s linear;
+
+			-webkit-box-shadow:inset 0 1px 3px rgba(0,0,0,0.12);
+			-moz-box-shadow:inset 0 1px 3px rgba(0,0,0,0.12);
+			box-shadow:inset 0 1px 3px rgba(0,0,0,0.12);
+			background-color:rgba(255,255,255,0.45);
+			background-repeat:repeat-x;
+			background-image:-khtml-gradient(linear,left top,left bottom,from(rgba(245,245,245,0)),to(rgba(255,255,255,0.45)));
+			background-image:-moz-linear-gradient(top,rgba(245,245,245,0),rgba(255,255,255,0.45));
+			background-image:-ms-linear-gradient(top,rgba(245,245,245,0),rgba(255,255,255,0.45));
+			background-image:-webkit-gradient(linear,left top,left bottom,color-stop(0%,rgba(245,245,245,0)),color-stop(100%,rgba(255,255,255,0.45)));
+			background-image:-webkit-linear-gradient(top,rgba(245,245,245,0),rgba(255,255,255,0.45));
+			background-image:-o-linear-gradient(top,rgba(245,245,245,0),rgba(255,255,255,0.45));
+			background-image:linear-gradient(top,rgba(245,245,245,0),rgba(255,255,255,0.45));
+		}
+
+		/* end Sections */
+		.single .back {
+			text-align: center;
+			font-weight: bold;
+		}
+		
+		/* Navigation */
+		.index .navigation {
+			display: none;
+		}
+		
+		.navigation {
+			margin-top: 20px;
+		}
+		.navigation .back {
+			display: block;
+			text-align: center;
+			font-weight: bold;
+		}
+		
+		.navigation .prev,
+		.navigation .next {
+			margin-bottom: 20px;
+		}
+		.navigation a {
+			font-size: 12px;
+		}
+		.navigation .prev {
+			float: left;
+		}
+		.navigation .next {
+			float: right;
+		}
+
+		.footer {
+			clear: both;
+			width: 100%;
+			margin-left: {{ Custom('block_left_margin')|default('0px') }};
+			margin-right: {{ Custom('block_right_margin')|default('2%') }};
+		}
+
+		.footer p {
+			{% if Custom('block_align') == 'right' or Custom('block_align') is not empty %}
+			text-align: right;
+			{% elseif Custom('block_align') == 'center' %}
+			text-align: center;
+			{% else %}
+			text-align: left;
+			{% endif %}
+		}
+
+		.footer p,
+		.footer a {
+			color: {{ Custom('links_color')|default('whiteSmoke') }};
+		}
+		.footer span {
+			display: inline-block;
+			margin-left: 4px;
+			margin-right: 4px;
+		}
+
+		.single .posts .item-content .body .ob-repost p {
+			margin: 0;
+		}
+		
+		.bx-pager {
+			width: 420px;
+			margin-left: auto;
+			margin-right: auto;
+		}
+		.bx-pager .pager-link {
+			margin-left: 5px;
+			margin-right: 5px;
+		}
+		
+		.bx-pager .pager-active {
+			font-weight:bold;
+		}
+		
+		/* Hack OB Bar */
+		body .ob-toolbar {display:none;}
+
+		/* Hack Twitter renderer */
+		.ob-section .twitter-tweet-rendered {
+			margin-left: auto!important;
+			margin-right: auto!important;
+			min-width: auto!important;
+			max-width: 650px!important;
+		}
+
+		.ob-section .twt-border {
+			max-width: 650px!important;
+			width: 650px!important;
+		}
+
+		blockquote.ob-tweet,
+		.ob-section .twt-border {
+			background-color: rgba(255, 255, 255, 0.7)!important;
+		}
+        
+        /* Hack for disqus */
+        #disqus_thread {
+            background: rgba(255, 255, 255, 0.7);
+            padding: 10px;
+            border-radius: 5px;
+        }
+
+        /* For single page */
+        .main.single {
+        	width: 650px;
+        	margin-right: 10%;
+        }
+
+        div.ob-footer {
+        	text-align: right!important;
+        }
+	</style>
+	
+	<!-- End CSS -->
+
+	<!-- shortcut:[Javascript] -->
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js" type="text/javascript"></script>
+	
+	{% if Custom('background_repeat') == 'cover' %}
+	<!-- Backstretch -->
+	<script src="http://data.over-blog-kiwi.com/0/00/01/04/201302/ob_6c72819a9ecf1a0017cdacf0aa306bdd_jquery-backstretch-min.js" type="text/javascript"></script>
+	{% endif %}
+
+	{% if isSingle %}
+	<!-- Fancybox -->
+	<script src="http://data.over-blog-kiwi.com/0/00/01/04/201302/ob_63ce26_jquery-fancybox-1-3-4-pack.js" type="text/javascript"></script>
+	<link rel="stylesheet" type="text/css" href="http://data.over-blog-kiwi.com/0/00/01/04/201302/ob_2cc45c078a2fd32532b31c083af9d638_jquery-fancybox-1-3-4.css" media="screen" />
+	{% endif %}
+	
+	{% if isIndex %}
+	<!-- Favicon fetcher -->
+	<script src="http://data.over-blog-kiwi.com/0/00/01/04/201302/ob_1283f0601d14ea2128e8549f4a8adabe_jquery-favicons.js" type="text/javascript"></script>
+	
+	<!-- bxSlider -->
+	<script src="http://data.over-blog-kiwi.com/0/00/01/04/201302/ob_ac39c05d78ca2618b3e60fc4e4bac12f_jquery-bxslider-min.js" type="text/javascript"></script>
+	{% endif %}
+
+	<!--[if lt IE 9]>
+		<script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+	<![endif]-->
+	<!-- End Javascript -->
+</head>
+<body>
+	<div id="fb-root"></div>
+	<!-- shortcut:[Main] -->
+	<div class="main {% if isSingle %}single{% elseif isIndex %}index{% elseif isSearch %}search{% elseif isTag %}tag{% endif %}">
+		{% if isIndex %}
+		<section class="profile">
+			{% if Custom('bio_photo_type') != 'None' %}
+			<div class="portait">
+				{% if Custom('bio_photo_type') == 'Uploaded photo' and Custom('bio_photo') is not empty %}
+				<img src="{{ Custom('bio_photo')|resize(Custom('bio_photo_size')|default('200'))|crop }}" title="{{ Custom('bio_name') }}" alt="{{ Custom('bio_name') }}" />
+				{% elseif Blog.Owner.Avatar is not empty %}
+				<img src="{{ Blog.Owner.Avatar|resize(Custom('bio_photo_size')|default('200'))|crop }}" title="{{ Custom('bio_name') }}" alt="{{ Custom('bio_name') }}" />
+				{% elseif Blog.Owner.Avatar is empty %}
+				<img src="{{ 'http://data.over-blog-kiwi.com/0/00/01/04/201302/ob_a4f76f624ccfaf94ab7d5cfa9b7159e2_avatar.png'|resize(Custom('bio_photo_size')|default('200'))|crop }}" title="{{ Custom('bio_name') }}" alt="{{ Custom('bio_name') }}" />
+				{% endif %}
+			</div>
+			{% endif %}
+
+			<h1>{{ Custom('bio_name')|default('John Doe') }}</h1>
+			<h2>{{ Custom('bio_headline')|default('Be smart get a resume blog') }}</h2>
+
+			<div class="about">
+				{{ Custom('bio_desc')|default('Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla purus massa, laoreet quis tincidunt a, interdum ac est. Donec consequat sodales dolor, ut volutpat elit fermentum vitae.') }}
+			</div>
+
+			<ul class="social">
+				{% if Custom('linkedin_account') is not empty %}
+				<li class="linkedin"><a href="http://www.linkedin.com/in/{{ Custom('linkedin_account') }}" title="{{ Lang.Get('See the profile on ') }} {{ Lang.Get('Linkedin') }}" target="_blank"></a></li>
+				{% endif %}
+				{% if Custom('twitter_account') is not empty %}
+				<li class="twitter"><a href="http://twitter.com/#!/{{ Custom('twitter_account') }}" title="{{ Lang.Get('See the profile on') }} {{ Lang.Get('Twitter') }}" target="_blank"></a></li>
+				{% endif %}
+				{% if Custom('facebook_account') is not empty %}
+				<li class="facebook"><a href="http://www.facebook.com/{{ Custom('facebook_account') }}" title="{{ Lang.Get('See the profile on') }} {{ Lang.Get('Facebook') }}" target="_blank"></a></li>
+				{% endif %}
+				{% if Custom('foursquare_account') is not empty %}
+				<li class="foursquare"><a href="http://foursquare.com/{{ Custom('foursquare_account') }}" title="{{ Lang.Get('See the profile on ') }} {{ Lang.Get('Foursquare') }}" target="_blank"></a></li>
+				{% endif %}
+				{% if Custom('flickr_account') is not empty %}
+				<li class="flickr"><a href="http://www.flickr.com/people/{{ Custom('flickr_account') }}" title="{{ Lang.Get('See the profile on ') }} {{ Lang.Get('Flickr') }}" target="_blank"></a></li>
+				{% endif %}
+				{% if Custom('youtube_account') is not empty %}
+				<li class="youtube"><a href="http://www.youtube.com/user/{{ Custom('youtube_account') }}" title="{{ Lang.Get('See the profile on ') }} {{ Lang.Get('Youtube') }}" target="_blank"></a></li>
+				{% endif %}
+			</ul>
+			<ul class="blogroll">
+				{% if Custom('blogroll_1') is not empty %}
+				<li><a href="{{ Custom('blogroll_1')|default('http://www.over-blog.com') }}" target="_blank">{{ Custom('blogroll_1')|default('http://www.over-blog.com') }}</a></li>
+				{% endif %}
+				{% if Custom('blogroll_2') is not empty %}
+				<li><a href="{{ Custom('blogroll_2') }}" target="_blank">{{ Custom('blogroll_2') }}</a></li>
+				{% endif %}
+				{% if Custom('blogroll_3') is not empty %}
+				<li><a href="{{ Custom('blogroll_3') }}" target="_blank">{{ Custom('blogroll_3') }}</a></li>
+				{% endif %}
+				{% if Custom('blogroll_4') is not empty %}
+				<li><a href="{{ Custom('blogroll_4') }}" target="_blank">{{ Custom('blogroll_4') }}</a></li>
+				{% endif %}
+				{% if Custom('blogroll_5') is not empty %}
+				<li><a href="{{ Custom('blogroll_5') }}" target="_blank">{{ Custom('blogroll_5') }}</a></li>
+				{% endif %}
+			</ul>
+			<div class="likeboxes">
+				<h3>{{ Custom('sharing_title')|default('Share me!') }}</h3>
+				<div class="share share-facebook">
+					<div class="fb-like" data-href="{{ Blog.Url }}" data-send="false" data-layout="button_count" data-width="150" data-show-faces="false"></div>
+				</div>
+				<div class="share share-twitter">
+					<a href="https://twitter.com/share" class="twitter-share-button" data-text="{{ Blog.Title }}" data-url="{{ Blog.Url }}" data-lang="{{ Blog.Lang }}" {% if Custom('twitter_account') is not empty %}data-via="{{Custom('twitter_account')}}{% endif %}">Tweet</a>
+				</div>
+				<div class="share share-google">
+					<g:plusone size="medium"></g:plusone>
+					<script type="text/javascript">
+					(function() {
+						var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;
+						po.src = 'https://apis.google.com/js/plusone.js';
+						var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
+					})();
+					</script>
+				</div>
+				<div class="share share-linkedin">
+					<script src="//platform.linkedin.com/in.js" type="text/javascript"></script>
+					<script type="IN/Share" data-counter="right"></script>
+				</div>
+			</div>
+			<div class="clear"></div>
+		</section>
+		{% endif %}
+
+		<section class="posts">
+			{% list Posts %}
+			<!-- Post item -->
+			<div class="post{% if isSingle == false and isIndex == false%} summary{% endif %}{% list Post.Sources %} {{Source}}{% endlist %}">
+					{% if isSingle == false and Post.Cover is not empty %}
+					<div class="item-cover">
+						<a href="{{Post.Permalink}}" alt="{{Post.Title}}" class="border-img">
+							<img src="{{ Post.Cover|resize(80)|crop }}" alt="{{Post.Title}}" title="{{Post.Title}}" />
+						</a>
+					</div>
+					{% endif %}
+					<div class="item-content">
+						<header>
+							<hgroup>
+								{% if isSingle %}
+								<h1 class="title">
+									{% if Post.Title is not empty %}{{Post.Title}}{% else %}{% list Post.Sources %}{% if loop.first %}{{ Lang.Get('A post from') }} {% if Source == 'OB' %}OverBlog{% elseif Source == 'FB' %}Facebook{% elseif Source == 'TW' %}Twitter{% elseif Source == 'FS' %}Foursquare{% elseif Source == 'IG' %}Instagram{% else %}Other{% endif %}{% endif %}{% endlist %}{% endif %}
+								</h1>
+								{% else %}
+								<h3 class="title">
+									<a href="{{Post.Permalink}}" alt="{{Post.Title}}">{% if Post.Title is not empty %}{{Post.Title}}{% else %}{% list Post.Sources %}{% if loop.first %}{{ Lang.Get('A post from') }} {% if Source == 'OB' %}OverBlog{% elseif Source == 'FB' %}Facebook{% elseif Source == 'TW' %}Twitter{% elseif Source == 'FS' %}Foursquare{% elseif Source == 'IG' %}Instagram{% else %}Other{% endif %}{% endif %}{% endlist %}{% endif %}</a>
+								</h3>
+								{% endif %}
+								
+								<div class="meta">
+									<a href="https://plus.google.com/104309256825299247169?rel=author" class="author" rel="author">{% if Post.Author is not empty %}{{ Post.Author }}{% endif %}</a>
+									— <time pubdate>{{ Post.Date|date("M d, Y") }}</time>
+									{% list Post.Tags %}{% if loop.first %}— {% else %},&nbsp;{% endif %}<a href="{{ Tag.Url }}"  alt="{{ Tag.Title }}">{{ Tag.Title }}</a>{% endlist %}
+								</div>
+
+							</hgroup>
+						</header>
+						<div class="body">
+							{% if isSingle %}
+							{{ Post.Body }}
+							{% else %}
+							{{Post.Snippet(120)}} <a href="{{Post.Permalink}}" alt="{{ Lang.Get('Read more') }}">{{ Lang.Get('Read more') }}</a>
+							{% endif %}
+						</div>
+						{% if isSingle %}
+						<div class="likeboxes clear">
+							<div class="share repost">
+								{{ Post.RepostButton() }}
+							</div>
+							<div class="share share-facebook">
+								<div class="fb-like" data-href="{{ Post.Permalink }}" data-send="false" data-layout="button_count" data-width="150" data-show-faces="true" data-font="lucida grande"></div>
+							</div>
+							<div class="share share-twitter">
+								<a href="https://twitter.com/share" class="twitter-share-button"  data-text="{% if Post.Title is not empty %}{{ Post.Title }}{% elseif Post.Snippet is not empty %}{{ Post.Snippet}}{% else %}{{ Blog.Title }}{% endif %}" data-url="{{ Post.Permalink }}" data-lang="{{ Blog.Lang }}"{% if Custom('twitter_account') is not empty %} data-via="{{Custom('twitter_account')}}"{% endif %}></a>
+							</div>
+							<div class="share share-google">
+								<g:plusone size="medium"></g:plusone>
+								<script type="text/javascript">
+								(function() {
+									var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;
+									po.src = 'https://apis.google.com/js/plusone.js';
+									var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
+								})();
+								</script>
+							</div>
+							<div class="share share-linkedin">
+								<script src="//platform.linkedin.com/in.js" type="text/javascript"></script>
+								<script type="IN/Share" data-counter="right"></script>
+							</div>
+						</div>
+						
+						{% if Post.ShowComments %}
+						<div class="item-comments clear">
+							{% if Custom("comment") == "Facebook" %}
+							<div class="fb-comments" data-href="{{ Post.Permalink }}" data-num-posts="2"></div>
+							{% elseif Custom("comment") == "Disqus" and Custom('comment_disqus') is not empty %}
+								<div id="disqus_thread"></div>
+								<script type="text/javascript">
+								var disqus_shortname = '{{ Custom('comment_disqus') }}';
+
+								(function() {
+								var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+								dsq.src = 'http://' + disqus_shortname + '.disqus.com/embed.js';
+								(document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+								})();
+								</script>
+								<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+							{% else %}
+								{{Post.Comments}}
+							{% endif %}
+						</div>
+						{% endif %}
+						<div class="clear"></div>
+						<!-- Pagination -->
+  				<nav class="navigation">
+  				{% if Navigation.PreviousPage is not empty or Navigation.PreviousPost is not empty %}
+
+  					{% if Navigation.PreviousPage is not empty %}
+  					<a href="{{Navigation.PreviousPage}}" class="prev">{{ Lang.Get('Previous page') }}</a>
+  					{% endif %}
+
+  					{% if Navigation.PreviousPost is not empty %}
+  					<a href="{{Navigation.PreviousPost.Permalink}}" class="prev">{{ Lang.Get('Older post') }}</a>
+  					{% endif %}
+  				{% endif %}
+
+  				{% if Navigation.NextPage is not empty or Navigation.NextPost is not empty %}
+  					{% if Navigation.NextPage is not empty %}
+  					<a href="{{Navigation.NextPage}}" class="next">{{ Lang.Get('Next page') }}</a>
+  					{% endif %}
+
+  					{% if Navigation.NextPost is not empty %}
+  					<a href="{{Navigation.NextPost.Permalink}}" class="next">{{ Lang.Get('Newest post') }}</a>
+  					{% endif %}
+  				{% endif %}
+
+  					<a href="/" class="back">{{ Lang.Get('Back to home') }}</a>
+  				</nav>
+  				<!-- End Pagination -->
+						{% endif %}
+					</div>
+			</div>
+			<!-- End Post item -->
+			{% endlist %}
+		</section>
+
+	</div>
+	
+	<!-- shortcut:[Footer] -->
+	<footer class="footer clear">
+		<p>
+		{% if Custom('page_1_title') and Custom('page_1_link') %}
+		<span><a href="{{ Custom('page_1_link') }}" alt="{{ Custom('page_1_title') }}">{{ Custom('page_1_title') }}</a></span>
+		{% endif %}
+		{% if Custom('page_2_title') and Custom('page_2_link') %}
+		<span><a href="{{ Custom('page_2_link') }}" alt="{{ Custom('page_2_title') }}">{{ Custom('page_2_title') }}</a></span>
+		{% endif %}
+		<span>{{Custom('wording_footer')|default('Design: Resume &copy; 2012')}}</span>
+		</p>
+	</footer>
+	<!--End Footer-->
+	
+	<!-- Scripts -->
+	<script type="text/javascript">
+		$(document).ready(function() {
+			
+			{% if Custom('background_repeat') == 'cover' %}
+			//  Backstrech
+			$.backstretch(
+				$('html').css('background-image').replace('url(','').replace(')','')
+			);
+			{% endif %}
+			
+			{% if isIndex %}
+				// Favicon on blogroll
+			$('.blogroll li').favicons({insert: 'insertBefore'});
+			$('.blogroll li a').each(function()
+			{
+				$(this).html($(this).html().replace('http://','').replace('www.', ''));
+			});
+
+			$(".posts").bxSlider({
+				controls: false,
+				mode: 'vertical',
+				infiniteLoop: true,
+				auto: true,
+				autoHover: true,
+				pause: 4000,
+				pager: true,
+				pagerType: 'full',
+				randomStart: false
+			});
+			{% endif %}
+			
+			{% if isSingle %}
+			$(".ob-section-images a").fancybox({
+				'overlayShow'	: false,
+				'transitionIn'	: 'elastic',
+				'transitionOut'	: 'elastic',
+				'type'	: 'image'
+			});
+			{% endif %}
+		});
+	
+	
+		$(window).load(function() {
+				$('.item-cover .border-img').each(function()
+				{
+					var prev = $(this).prev('img');
+					$(this).css('width', prev.css('width'));
+					$(this).css('height', prev.css('height'));
+					$(this).show();
+				});
+						// enhance video
+				$('.single .item-content .body .ob-section-video iframe').each(function(){
+					$(this).css('width', 600);
+				});
+				$('.single .item-content .body .ob-section-images a').click(function(){
+					 event.preventDefault();
+				});
+		});
+	</script>
+
+	<!-- Twitter Script -->
+	<script type="text/javascript">!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs); }}(document,"script","twitter-wjs");</script>
+
+	<!-- Facebook Script -->
+	<script type="text/javascript">(function(d, s, id) {
+		var js, fjs = d.getElementsByTagName(s)[0];
+		if (d.getElementById(id)) return;
+		js = d.createElement(s); js.id = id;
+		js.src = "//connect.facebook.net/en_US/all.js#xfbml=1&appId={{ Custom('facebook_appid')|default('127607930619601') }}";
+		fjs.parentNode.insertBefore(js, fjs);
+		}(document, 'script', 'facebook-jssdk'));
+	</script>
+
+	{% if Custom('google_analytics') is not empty %}
+	<!-- Google Analytics -->
+	 <script type="text/javascript">
+	    window.google_analytics_uacct = '{{Custom('google_analytics')}}';
+	    var _gaq = _gaq || [];
+	    _gaq.push(['_setAccount', '{{Custom('google_analytics')}}']);
+	    _gaq.push(['_trackPageview']);
+	    _gaq.push(['_trackPageLoadTime']);
+
+	    (function() {
+	        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+	        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+	        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+	    })();
+	</script>
+	<!-- End Google Analytics -->
+	{% endif %}
+</body>
+</html>
